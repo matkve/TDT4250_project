@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated footballWorldCups -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="tdt4250.wc.presentation.WcModelWizardID"
+            name="%_UI_WcModelWizard_label"
+            class="tdt4250.wc.presentation.WcModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/WcModelFile.gif">
+         <description>%_UI_WcModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated footballWorldCups -->
+      <editor
+            id="tdt4250.wc.presentation.WcEditorID"
+            name="%_UI_WcEditor_label"
+            icon="icons/full/obj16/WcModelFile.gif"
+            extensions="wc"
+            class="tdt4250.wc.presentation.WcEditor"
+            contributorClass="tdt4250.wc.presentation.WcActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

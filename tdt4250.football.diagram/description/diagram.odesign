@@ -1,0 +1,1115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="wcDiagram" version="12.0.0.2017041100">
+  <ownedViewpoints name="WcDiagramViewpoint" modelFileExtension="wc">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="WcDiagram" domainClass="wc::WorldCup" enablePopupBars="true">
+      <filters xsi:type="filter:CompositeFilterDescription" name="HideThirdPlacePlayoff">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@containerMappings[name='WorldCupContainer']/@subContainerMappings[name='Playoff']"/>
+      </filters>
+      <defaultLayer name="Default">
+        <edgeMappings name="Stage1ToRo16" sourceMapping="//@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@containerMappings[name='WorldCupContainer']/@subContainerMappings[name='Stage1GroupsContainer']/@subContainerMappings[name='Stage1Group']" targetMapping="//@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@containerMappings[name='WorldCupContainer']/@subContainerMappings[name='RoundOf16']/@subContainerMappings[name='Ro16Match']" targetFinderExpression="aql:let teams = self.match.homeTeam.team.code->union(self.match.awayTeam.team.code)->asSet() self.eContainer().roundOf16->select(match | teams->includes(match.homeTeam.team.code) or teams->includes(match.awayTeam.team.code))">
+          <style>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription labelSize="12" showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Ro16ToQuarters" sourceMapping="//@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@containerMappings[name='WorldCupContainer']/@subContainerMappings[name='RoundOf16']/@subContainerMappings[name='Ro16Match']" targetMapping="//@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@containerMappings[name='WorldCupContainer']/@subContainerMappings[name='QuarterFinals']/@subContainerMappings[name='QuarterFinalsMatch']" targetFinderExpression="aql:let home = self.homeTeam.team.code let away = self.awayTeam.team.code self.eContainer().quarterFinals->select(match | match.homeTeam.team.code = home or match.awayTeam.team.code = home or match.homeTeam.team.code = away or match.awayTeam.team.code = away)">
+          <style>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription labelSize="12" showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="QuartersToSemis" sourceMapping="//@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@containerMappings[name='WorldCupContainer']/@subContainerMappings[name='QuarterFinals']/@subContainerMappings[name='QuarterFinalsMatch']" targetMapping="//@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@containerMappings[name='WorldCupContainer']/@subContainerMappings[name='SemiFinals']/@subContainerMappings[name='SemiFinalsMatch']" targetFinderExpression="aql:let home = self.homeTeam.team.code let away = self.awayTeam.team.code self.eContainer().semiFinals->select(match | match.homeTeam.team.code = home or match.awayTeam.team.code = home or match.homeTeam.team.code = away or match.awayTeam.team.code = away)">
+          <style>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription labelSize="12" showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="SemisToFinal" sourceMapping="//@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@containerMappings[name='WorldCupContainer']/@subContainerMappings[name='SemiFinals']/@subContainerMappings[name='SemiFinalsMatch']" targetMapping="//@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@containerMappings[name='WorldCupContainer']/@subContainerMappings[name='Final']/@subContainerMappings[name='FinalMatch']" targetFinderExpression="aql:self.eContainer().final">
+          <style>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription labelSize="12" showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="SemisToPlayoff" sourceMapping="//@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@containerMappings[name='WorldCupContainer']/@subContainerMappings[name='SemiFinals']/@subContainerMappings[name='SemiFinalsMatch']" targetMapping="//@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@containerMappings[name='WorldCupContainer']/@subContainerMappings[name='Playoff']/@subContainerMappings[name='PlayoffMatch']" targetFinderExpression="aql:self.eContainer().thirdPlacePlayoff">
+          <style>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription labelSize="12" showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="WorldCupContainer" semanticCandidatesExpression="aql:self" domainClass="wc::WorldCup">
+          <subContainerMappings name="Stage1GroupsContainer" semanticCandidatesExpression="aql:self" domainClass="wc::WorldCup">
+            <subContainerMappings name="Stage1Group" semanticCandidatesExpression="feature:stageOneGroups" domainClass="wc::StageOneGroup" childrenPresentation="VerticalStack">
+              <subContainerMappings name="GroupMatch" semanticCandidatesExpression="feature:match" doubleClickDescription="//@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='NavigateMatchDetails']" domainClass="wc::Match" childrenPresentation="List">
+                <subNodeMappings name="MatchTeams" semanticCandidatesExpression="aql:self" doubleClickDescription="//@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='NavigateMatchDetails']" domainClass="wc::Match">
+                  <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:self.homeTeam.team.code + ' vs ' + self.awayTeam.team.code" tooltipExpression="Double click to show details" labelPosition="node" resizeKind="NSEW">
+                    <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    <labelFormat>bold</labelFormat>
+                    <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  </style>
+                </subNodeMappings>
+                <subNodeMappings name="Winner" semanticCandidatesExpression="aql:self" doubleClickDescription="//@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='NavigateMatchDetails']" domainClass="wc::Match">
+                  <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:if self.homeTeam.winner then 'Winner: ' + self.homeTeam.team.code else if self.awayTeam.winner then 'Winner: ' + self.awayTeam.team.code else 'Draw' endif endif" tooltipExpression="Double click to show details" labelPosition="node" resizeKind="NSEW">
+                    <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  </style>
+                </subNodeMappings>
+                <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="Match" hideLabelByDefault="true">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+                  <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+                </style>
+              </subContainerMappings>
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="feature:groupLetter">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelFormat>bold</labelFormat>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+              </style>
+            </subContainerMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="16" showIcon="false" labelExpression="First Stage" backgroundStyle="GradientTopToBottom">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+            </style>
+          </subContainerMappings>
+          <subContainerMappings name="RoundOf16" semanticCandidatesExpression="aql:self" domainClass="wc::WorldCup">
+            <subContainerMappings name="Ro16Match" semanticCandidatesExpression="feature:roundOf16" doubleClickDescription="//@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='NavigateMatchDetails']" domainClass="wc::Match" childrenPresentation="List">
+              <subNodeMappings name="MatchTeams" semanticCandidatesExpression="aql:self" doubleClickDescription="//@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='NavigateMatchDetails']" domainClass="wc::Match">
+                <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:self.homeTeam.team.code + ' vs ' + self.awayTeam.team.code" tooltipExpression="Double click to show details" labelPosition="node" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelFormat>bold</labelFormat>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </subNodeMappings>
+              <subNodeMappings name="Winner" semanticCandidatesExpression="aql:self" doubleClickDescription="//@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='NavigateMatchDetails']" domainClass="wc::Match">
+                <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:if self.homeTeam.winner then 'Winner: ' + self.homeTeam.team.code else if self.awayTeam.winner then 'Winner: ' + self.awayTeam.team.code else 'Draw' endif endif" tooltipExpression="Double click to show details" labelPosition="node" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </subNodeMappings>
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="Match" hideLabelByDefault="true">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+              </style>
+            </subContainerMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="16" showIcon="false" labelExpression="Round Of 16" backgroundStyle="GradientTopToBottom">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+            </style>
+          </subContainerMappings>
+          <subContainerMappings name="QuarterFinals" semanticCandidatesExpression="aql:self" domainClass="wc::WorldCup">
+            <subContainerMappings name="QuarterFinalsMatch" semanticCandidatesExpression="feature:quarterFinals" doubleClickDescription="//@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='NavigateMatchDetails']" domainClass="wc::Match" childrenPresentation="List">
+              <subNodeMappings name="MatchTeams" semanticCandidatesExpression="aql:self" doubleClickDescription="//@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='NavigateMatchDetails']" domainClass="wc::Match">
+                <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:self.homeTeam.team.code + ' vs ' + self.awayTeam.team.code" tooltipExpression="Double click to show details" labelPosition="node" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelFormat>bold</labelFormat>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </subNodeMappings>
+              <subNodeMappings name="Winner" semanticCandidatesExpression="aql:self" doubleClickDescription="//@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='NavigateMatchDetails']" domainClass="wc::Match">
+                <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:if self.homeTeam.winner then 'Winner: ' + self.homeTeam.team.code else if self.awayTeam.winner then 'Winner: ' + self.awayTeam.team.code else 'Draw' endif endif" tooltipExpression="Double click to show details" labelPosition="node" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </subNodeMappings>
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="Match" hideLabelByDefault="true">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+              </style>
+            </subContainerMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="16" showIcon="false" labelExpression="Quarter Finals" backgroundStyle="GradientTopToBottom">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+            </style>
+          </subContainerMappings>
+          <subContainerMappings name="SemiFinals" semanticCandidatesExpression="aql:self" domainClass="wc::WorldCup">
+            <subContainerMappings name="SemiFinalsMatch" semanticCandidatesExpression="feature:semiFinals" doubleClickDescription="//@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='NavigateMatchDetails']" domainClass="wc::Match" childrenPresentation="List">
+              <subNodeMappings name="MatchTeams" semanticCandidatesExpression="aql:self" doubleClickDescription="//@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='NavigateMatchDetails']" domainClass="wc::Match">
+                <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:self.homeTeam.team.code + ' vs ' + self.awayTeam.team.code" tooltipExpression="Double click to show details" labelPosition="node" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelFormat>bold</labelFormat>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </subNodeMappings>
+              <subNodeMappings name="Winner" semanticCandidatesExpression="aql:self" doubleClickDescription="//@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='NavigateMatchDetails']" domainClass="wc::Match">
+                <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:if self.homeTeam.winner then 'Winner: ' + self.homeTeam.team.code else if self.awayTeam.winner then 'Winner: ' + self.awayTeam.team.code else 'Draw' endif endif" tooltipExpression="Double click to show details" labelPosition="node" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </subNodeMappings>
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="Match" hideLabelByDefault="true">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+              </style>
+            </subContainerMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="16" showIcon="false" labelExpression="Semi Finals" backgroundStyle="GradientTopToBottom">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+            </style>
+          </subContainerMappings>
+          <subContainerMappings name="Final" semanticCandidatesExpression="aql:self" domainClass="wc::WorldCup">
+            <subContainerMappings name="FinalMatch" semanticCandidatesExpression="feature:final" doubleClickDescription="//@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='NavigateMatchDetails']" domainClass="wc::Match" childrenPresentation="List">
+              <subNodeMappings name="MatchTeams" semanticCandidatesExpression="aql:self" doubleClickDescription="//@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='NavigateMatchDetails']" domainClass="wc::Match">
+                <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:self.homeTeam.team.code + ' vs ' + self.awayTeam.team.code" tooltipExpression="Double click to show details" labelPosition="node" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelFormat>bold</labelFormat>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </subNodeMappings>
+              <subNodeMappings name="Winner" semanticCandidatesExpression="aql:self" doubleClickDescription="//@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='NavigateMatchDetails']" domainClass="wc::Match">
+                <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:if self.homeTeam.winner then 'Winner: ' + self.homeTeam.team.code else if self.awayTeam.winner then 'Winner: ' + self.awayTeam.team.code else 'Draw' endif endif" tooltipExpression="Double click to show details" labelPosition="node" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </subNodeMappings>
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="Match" hideLabelByDefault="true">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+              </style>
+            </subContainerMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="16" showIcon="false" labelExpression="Final" backgroundStyle="GradientTopToBottom">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+            </style>
+          </subContainerMappings>
+          <subContainerMappings name="Playoff" semanticCandidatesExpression="aql:self" domainClass="wc::WorldCup">
+            <subContainerMappings name="PlayoffMatch" semanticCandidatesExpression="feature:thirdPlacePlayoff" doubleClickDescription="//@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='NavigateMatchDetails']" domainClass="wc::Match" childrenPresentation="List">
+              <subNodeMappings name="MatchTeams" semanticCandidatesExpression="aql:self" doubleClickDescription="//@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='NavigateMatchDetails']" domainClass="wc::Match">
+                <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:self.homeTeam.team.code + ' vs ' + self.awayTeam.team.code" tooltipExpression="Double click to show details" labelPosition="node" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelFormat>bold</labelFormat>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </subNodeMappings>
+              <subNodeMappings name="Winner" semanticCandidatesExpression="aql:self" doubleClickDescription="//@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='NavigateMatchDetails']" domainClass="wc::Match">
+                <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:if self.homeTeam.winner then 'Winner: ' + self.homeTeam.team.code else if self.awayTeam.winner then 'Winner: ' + self.awayTeam.team.code else 'Draw' endif endif" tooltipExpression="Double click to show details" labelPosition="node" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </subNodeMappings>
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="Match" hideLabelByDefault="true">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+              </style>
+            </subContainerMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="16" showIcon="false" labelExpression="Third Place Playoff" backgroundStyle="GradientTopToBottom">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+            </style>
+          </subContainerMappings>
+          <subContainerMappings name="TeamsContainer" semanticCandidatesExpression="aql:self" domainClass="wc::WorldCup" childrenPresentation="List">
+            <subNodeMappings name="TeamNode" semanticCandidatesExpression="feature:teams" doubleClickDescription="//@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='NavigateTeamDetails']" domainClass="wc::Team">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:self.code + ': ' + self.country" tooltipExpression="Double click to show details" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="20" showIcon="false" labelExpression="Teams">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_chocolate']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_chocolate']"/>
+            </style>
+          </subContainerMappings>
+          <subContainerMappings name="ArenasContainer" semanticCandidatesExpression="aql:self" domainClass="wc::WorldCup" childrenPresentation="List">
+            <subNodeMappings name="ArenaNode" semanticCandidatesExpression="feature:arenas" doubleClickDescription="//@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='NavigateArenaDetails']" domainClass="wc::Arena">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:self.name + ' - ' + self.city" tooltipExpression="Double click to show details" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="20" showIcon="false" labelExpression="Arenas">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="20" showIcon="false" labelExpression="aql:'World Cup ' + self.year">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="CreationTools">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="PlayerCreation">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="wc::Player" referenceName="players">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'&lt;name>'"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="TeamCreation">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="wc::Team" referenceName="teams">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'&lt;name>'"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="NavigationTools">
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="NavigateMatchDetails" mappings="//@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@containerMappings[name='WorldCupContainer']/@subContainerMappings[name='Stage1GroupsContainer']/@subContainerMappings[name='Stage1Group']/@subContainerMappings[name='GroupMatch'] //@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@containerMappings[name='WorldCupContainer']/@subContainerMappings[name='Final']/@subContainerMappings[name='FinalMatch'] //@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@containerMappings[name='WorldCupContainer']/@subContainerMappings[name='Playoff']/@subContainerMappings[name='PlayoffMatch'] //@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@containerMappings[name='WorldCupContainer']/@subContainerMappings[name='QuarterFinals']/@subContainerMappings[name='QuarterFinalsMatch'] //@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@containerMappings[name='WorldCupContainer']/@subContainerMappings[name='RoundOf16']/@subContainerMappings[name='Ro16Match'] //@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@containerMappings[name='WorldCupContainer']/@subContainerMappings[name='SemiFinals']/@subContainerMappings[name='SemiFinalsMatch'] //@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@containerMappings[name='WorldCupContainer']/@subContainerMappings[name='Final']/@subContainerMappings[name='FinalMatch']/@subNodeMappings[name='MatchTeams'] //@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@containerMappings[name='WorldCupContainer']/@subContainerMappings[name='Final']/@subContainerMappings[name='FinalMatch']/@subNodeMappings[name='Winner'] //@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@containerMappings[name='WorldCupContainer']/@subContainerMappings[name='Playoff']/@subContainerMappings[name='PlayoffMatch']/@subNodeMappings[name='MatchTeams'] //@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@containerMappings[name='WorldCupContainer']/@subContainerMappings[name='Playoff']/@subContainerMappings[name='PlayoffMatch']/@subNodeMappings[name='Winner'] //@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@containerMappings[name='WorldCupContainer']/@subContainerMappings[name='QuarterFinals']/@subContainerMappings[name='QuarterFinalsMatch']/@subNodeMappings[name='MatchTeams'] //@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@containerMappings[name='WorldCupContainer']/@subContainerMappings[name='QuarterFinals']/@subContainerMappings[name='QuarterFinalsMatch']/@subNodeMappings[name='Winner'] //@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@containerMappings[name='WorldCupContainer']/@subContainerMappings[name='RoundOf16']/@subContainerMappings[name='Ro16Match']/@subNodeMappings[name='MatchTeams'] //@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@containerMappings[name='WorldCupContainer']/@subContainerMappings[name='RoundOf16']/@subContainerMappings[name='Ro16Match']/@subNodeMappings[name='Winner'] //@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@containerMappings[name='WorldCupContainer']/@subContainerMappings[name='SemiFinals']/@subContainerMappings[name='SemiFinalsMatch']/@subNodeMappings[name='MatchTeams'] //@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@containerMappings[name='WorldCupContainer']/@subContainerMappings[name='SemiFinals']/@subContainerMappings[name='SemiFinalsMatch']/@subNodeMappings[name='Winner'] //@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@containerMappings[name='WorldCupContainer']/@subContainerMappings[name='Stage1GroupsContainer']/@subContainerMappings[name='Stage1Group']/@subContainerMappings[name='GroupMatch']/@subNodeMappings[name='MatchTeams'] //@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@containerMappings[name='WorldCupContainer']/@subContainerMappings[name='Stage1GroupsContainer']/@subContainerMappings[name='Stage1Group']/@subContainerMappings[name='GroupMatch']/@subNodeMappings[name='Winner']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:Navigation" createIfNotExistent="true" diagramDescription="//@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='MatchDetailsDiagram']"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="NavigateTeamDetails" mappings="//@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@containerMappings[name='WorldCupContainer']/@subContainerMappings[name='TeamsContainer']/@subNodeMappings[name='TeamNode']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:Navigation" createIfNotExistent="true" diagramDescription="//@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='TeamDiagram']"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="NavigateArenaDetails" mappings="//@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']/@defaultLayer/@containerMappings[name='WorldCupContainer']/@subContainerMappings[name='ArenasContainer']/@subNodeMappings[name='ArenaNode']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:Navigation" createIfNotExistent="true" diagramDescription="//@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='ArenaDiagram']"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="MatchDetailsDiagram" domainClass="wc::Match" enablePopupBars="true">
+      <defaultLayer name="Default">
+        <edgeMappings name="HomePlayerEvents" sourceMapping="//@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='MatchDetailsDiagram']/@defaultLayer/@containerMappings[name='HomeTeamDetailsContainer']/@subContainerMappings[name='EventsContainer']/@subContainerMappings[name='Event']" targetMapping="//@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='MatchDetailsDiagram']/@defaultLayer/@containerMappings[name='HomeTeamDetailsContainer']/@subContainerMappings[name='CompositionContainer']/@subContainerMappings[name='AttackersContainer']/@subContainerMappings[name='Attacker'] //@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='MatchDetailsDiagram']/@defaultLayer/@containerMappings[name='HomeTeamDetailsContainer']/@subContainerMappings[name='CompositionContainer']/@subContainerMappings[name='DefendersContainer']/@subContainerMappings[name='Defender'] //@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='MatchDetailsDiagram']/@defaultLayer/@containerMappings[name='HomeTeamDetailsContainer']/@subContainerMappings[name='CompositionContainer']/@subContainerMappings[name='GoalieContainer']/@subContainerMappings[name='Goalie'] //@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='MatchDetailsDiagram']/@defaultLayer/@containerMappings[name='HomeTeamDetailsContainer']/@subContainerMappings[name='CompositionContainer']/@subContainerMappings[name='MidfieldsContainer']/@subContainerMappings[name='Midfield'] //@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='MatchDetailsDiagram']/@defaultLayer/@containerMappings[name='HomeTeamDetailsContainer']/@subContainerMappings[name='CompositionContainer']/@subContainerMappings[name='SubstitutesContainer']/@subContainerMappings[name='Substitute']" targetFinderExpression="feature:player">
+          <style sourceArrow="OutputArrow">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="AwayPlayerEvents" sourceMapping="//@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='MatchDetailsDiagram']/@defaultLayer/@containerMappings[name='AwayTeamDetailsContainer']/@subContainerMappings[name='EventsContainer']/@subContainerMappings[name='Event']" targetMapping="//@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='MatchDetailsDiagram']/@defaultLayer/@containerMappings[name='AwayTeamDetailsContainer']/@subContainerMappings[name='CompositionContainer']/@subContainerMappings[name='AttackersContainer']/@subContainerMappings[name='Attacker'] //@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='MatchDetailsDiagram']/@defaultLayer/@containerMappings[name='AwayTeamDetailsContainer']/@subContainerMappings[name='CompositionContainer']/@subContainerMappings[name='DefendersContainer']/@subContainerMappings[name='Defender'] //@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='MatchDetailsDiagram']/@defaultLayer/@containerMappings[name='AwayTeamDetailsContainer']/@subContainerMappings[name='CompositionContainer']/@subContainerMappings[name='GoalieContainer']/@subContainerMappings[name='Goalie'] //@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='MatchDetailsDiagram']/@defaultLayer/@containerMappings[name='AwayTeamDetailsContainer']/@subContainerMappings[name='CompositionContainer']/@subContainerMappings[name='MidfieldsContainer']/@subContainerMappings[name='Midfield'] //@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='MatchDetailsDiagram']/@defaultLayer/@containerMappings[name='AwayTeamDetailsContainer']/@subContainerMappings[name='CompositionContainer']/@subContainerMappings[name='SubstitutesContainer']/@subContainerMappings[name='Substitute']" targetFinderExpression="feature:player">
+          <style sourceArrow="OutputArrow">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="HomeTeamDetailsContainer" semanticCandidatesExpression="feature:homeTeam" domainClass="wc::TeamMatchDetails">
+          <subContainerMappings name="CompositionContainer" semanticCandidatesExpression="feature:teamComposition" domainClass="wc::StartStrategy" childrenPresentation="VerticalStack">
+            <subContainerMappings name="GoalieContainer" semanticCandidatesExpression="aql:self" domainClass="wc::StartStrategy" childrenPresentation="VerticalStack">
+              <subContainerMappings name="Goalie" semanticCandidatesExpression="feature:goalie" domainClass="wc::Player">
+                <style xsi:type="style:FlatContainerStyleDescription" labelSize="12" showIcon="false" backgroundStyle="GradientTopToBottom">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+                  <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+                </style>
+              </subContainerMappings>
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="Goalie" backgroundStyle="GradientTopToBottom">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelFormat>bold</labelFormat>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+              </style>
+            </subContainerMappings>
+            <subContainerMappings name="DefendersContainer" semanticCandidatesExpression="aql:self" domainClass="wc::StartStrategy" childrenPresentation="VerticalStack">
+              <subContainerMappings name="Defender" semanticCandidatesExpression="feature:defender" domainClass="wc::Player">
+                <style xsi:type="style:FlatContainerStyleDescription" labelSize="12" showIcon="false" backgroundStyle="GradientTopToBottom">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+                  <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+                </style>
+              </subContainerMappings>
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="Defenders" backgroundStyle="GradientTopToBottom">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelFormat>bold</labelFormat>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+              </style>
+            </subContainerMappings>
+            <subContainerMappings name="MidfieldsContainer" semanticCandidatesExpression="aql:self" domainClass="wc::StartStrategy" childrenPresentation="VerticalStack">
+              <subContainerMappings name="Midfield" semanticCandidatesExpression="feature:midfield" domainClass="wc::Player">
+                <style xsi:type="style:FlatContainerStyleDescription" labelSize="12" showIcon="false" backgroundStyle="GradientTopToBottom">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+                  <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+                </style>
+              </subContainerMappings>
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="Midfields" backgroundStyle="GradientTopToBottom">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelFormat>bold</labelFormat>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+              </style>
+            </subContainerMappings>
+            <subContainerMappings name="AttackersContainer" semanticCandidatesExpression="aql:self" domainClass="wc::StartStrategy" childrenPresentation="VerticalStack">
+              <subContainerMappings name="Attacker" semanticCandidatesExpression="feature:forward" domainClass="wc::Player">
+                <style xsi:type="style:FlatContainerStyleDescription" labelSize="12" showIcon="false" backgroundStyle="GradientTopToBottom">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+                  <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+                </style>
+              </subContainerMappings>
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="Attackers" backgroundStyle="GradientTopToBottom">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelFormat>bold</labelFormat>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+              </style>
+            </subContainerMappings>
+            <subContainerMappings name="SubstitutesContainer" semanticCandidatesExpression="aql:self" domainClass="wc::StartStrategy" childrenPresentation="VerticalStack">
+              <subContainerMappings name="Substitute" semanticCandidatesExpression="feature:substitutes" domainClass="wc::Player">
+                <style xsi:type="style:FlatContainerStyleDescription" labelSize="12" showIcon="false" backgroundStyle="GradientTopToBottom">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+                  <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+                </style>
+              </subContainerMappings>
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="Substitutes" backgroundStyle="GradientTopToBottom">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelFormat>bold</labelFormat>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+              </style>
+            </subContainerMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="16" showIcon="false" labelExpression="Team Composition" backgroundStyle="GradientTopToBottom">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelFormat>bold</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+            </style>
+          </subContainerMappings>
+          <subContainerMappings name="EventsContainer" semanticCandidatesExpression="aql:self" domainClass="wc::TeamMatchDetails" childrenPresentation="VerticalStack">
+            <subContainerMappings name="Event" semanticCandidatesExpression="feature:events" domainClass="wc::Event">
+              <style xsi:type="style:FlatContainerStyleDescription" labelSize="12" showIcon="false" labelExpression="aql:self.description + ' ['+ self.time + ']'" backgroundStyle="GradientTopToBottom">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+              </style>
+            </subContainerMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="16" showIcon="false" labelExpression="Events" backgroundStyle="GradientTopToBottom">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelFormat>bold</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+            </style>
+          </subContainerMappings>
+          <subContainerMappings name="StatisticsContainer" semanticCandidatesExpression="aql:self" domainClass="wc::TeamMatchDetails" childrenPresentation="List">
+            <subNodeMappings name="Goals" semanticCandidatesExpression="feature:statistics" domainClass="wc::TeamMatchStatistics">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Goals: ' + self.goals" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="Penalties" semanticCandidatesExpression="feature:statistics" domainClass="wc::TeamMatchStatistics">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Penalties: ' + self.penalties" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="AttemptsOnGoal" semanticCandidatesExpression="feature:statistics" domainClass="wc::TeamMatchStatistics">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Attempts on goal: ' + self.attemptsOnGoal" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="OnTarget" semanticCandidatesExpression="feature:statistics" domainClass="wc::TeamMatchStatistics">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'On target: ' + self.onTarget" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="OffTarget" semanticCandidatesExpression="feature:statistics" domainClass="wc::TeamMatchStatistics">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Off target: ' + self.offTarget" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="Blocked" semanticCandidatesExpression="feature:statistics" domainClass="wc::TeamMatchStatistics">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Blocked: ' + self.blocked" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="Woodwork" semanticCandidatesExpression="feature:statistics" domainClass="wc::TeamMatchStatistics">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Woodwork: ' + self.woodwork" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="Corners" semanticCandidatesExpression="feature:statistics" domainClass="wc::TeamMatchStatistics">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Corners: ' + self.corners" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="Offsides" semanticCandidatesExpression="feature:statistics" domainClass="wc::TeamMatchStatistics">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Offsides: ' + self.offsides" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="BallPossession" semanticCandidatesExpression="feature:statistics" domainClass="wc::TeamMatchStatistics">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Ball possession: ' + self.ballPossession" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="PassAccuracy" semanticCandidatesExpression="feature:statistics" domainClass="wc::TeamMatchStatistics">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Pass accuracy: ' + self.passAccuracy" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="NumPasses" semanticCandidatesExpression="feature:statistics" domainClass="wc::TeamMatchStatistics">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Num passes: ' + self.numPasses" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="PassesCompleted" semanticCandidatesExpression="feature:statistics" domainClass="wc::TeamMatchStatistics">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Passes completed: ' + self.passesCompleted" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="DistanceCovered" semanticCandidatesExpression="feature:statistics" domainClass="wc::TeamMatchStatistics">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Distance covered: ' + self.distanceCovered" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="BallsRecovered" semanticCandidatesExpression="feature:statistics" domainClass="wc::TeamMatchStatistics">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Balls recovered: ' + self.ballsRecovered" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="Tackles" semanticCandidatesExpression="feature:statistics" domainClass="wc::TeamMatchStatistics">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Tackles: ' + self.tackles" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="Clearances" semanticCandidatesExpression="feature:statistics" domainClass="wc::TeamMatchStatistics">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Clearances: ' + self.clearances" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="YellowCards" semanticCandidatesExpression="feature:statistics" domainClass="wc::TeamMatchStatistics">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Yellow cards: ' + self.yellowCards" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="RedCards" semanticCandidatesExpression="feature:statistics" domainClass="wc::TeamMatchStatistics">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Red cards: ' + self.redCards" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="FoulsCommitted" semanticCandidatesExpression="feature:statistics" domainClass="wc::TeamMatchStatistics">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Fouls committed: ' + self.foulsCommitted" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="16" showIcon="false" labelExpression="Statistics" backgroundStyle="GradientTopToBottom">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelFormat>bold</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="20" showIcon="false" labelExpression="aql:if self.winner then 'Home Team - ' + self.team.code + ': ' + self.team.country + ' (winner)' else 'Home Team - ' + self.team.code + ': ' + self.team.country endif">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="AwayTeamDetailsContainer" semanticCandidatesExpression="feature:awayTeam" domainClass="wc::TeamMatchDetails">
+          <subContainerMappings name="CompositionContainer" semanticCandidatesExpression="feature:teamComposition" domainClass="wc::StartStrategy" childrenPresentation="VerticalStack">
+            <subContainerMappings name="GoalieContainer" semanticCandidatesExpression="aql:self" domainClass="wc::StartStrategy" childrenPresentation="VerticalStack">
+              <subContainerMappings name="Goalie" semanticCandidatesExpression="feature:goalie" domainClass="wc::Player">
+                <style xsi:type="style:FlatContainerStyleDescription" labelSize="12" showIcon="false" backgroundStyle="GradientTopToBottom">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+                  <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+                </style>
+              </subContainerMappings>
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="Goalie" backgroundStyle="GradientTopToBottom">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelFormat>bold</labelFormat>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+              </style>
+            </subContainerMappings>
+            <subContainerMappings name="DefendersContainer" semanticCandidatesExpression="aql:self" domainClass="wc::StartStrategy" childrenPresentation="VerticalStack">
+              <subContainerMappings name="Defender" semanticCandidatesExpression="feature:defender" domainClass="wc::Player">
+                <style xsi:type="style:FlatContainerStyleDescription" labelSize="12" showIcon="false" backgroundStyle="GradientTopToBottom">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+                  <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+                </style>
+              </subContainerMappings>
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="Defenders" backgroundStyle="GradientTopToBottom">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelFormat>bold</labelFormat>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+              </style>
+            </subContainerMappings>
+            <subContainerMappings name="MidfieldsContainer" semanticCandidatesExpression="aql:self" domainClass="wc::StartStrategy" childrenPresentation="VerticalStack">
+              <subContainerMappings name="Midfield" semanticCandidatesExpression="feature:midfield" domainClass="wc::Player">
+                <style xsi:type="style:FlatContainerStyleDescription" labelSize="12" showIcon="false" backgroundStyle="GradientTopToBottom">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+                  <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+                </style>
+              </subContainerMappings>
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="Midfields" backgroundStyle="GradientTopToBottom">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelFormat>bold</labelFormat>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+              </style>
+            </subContainerMappings>
+            <subContainerMappings name="AttackersContainer" semanticCandidatesExpression="aql:self" domainClass="wc::StartStrategy" childrenPresentation="VerticalStack">
+              <subContainerMappings name="Attacker" semanticCandidatesExpression="feature:forward" domainClass="wc::Player">
+                <style xsi:type="style:FlatContainerStyleDescription" labelSize="12" showIcon="false" backgroundStyle="GradientTopToBottom">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+                  <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+                </style>
+              </subContainerMappings>
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="Attackers" backgroundStyle="GradientTopToBottom">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelFormat>bold</labelFormat>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+              </style>
+            </subContainerMappings>
+            <subContainerMappings name="SubstitutesContainer" semanticCandidatesExpression="aql:self" domainClass="wc::StartStrategy" childrenPresentation="VerticalStack">
+              <subContainerMappings name="Substitute" semanticCandidatesExpression="feature:substitutes" domainClass="wc::Player">
+                <style xsi:type="style:FlatContainerStyleDescription" labelSize="12" showIcon="false" backgroundStyle="GradientTopToBottom">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+                  <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+                </style>
+              </subContainerMappings>
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="Substitutes" backgroundStyle="GradientTopToBottom">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelFormat>bold</labelFormat>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+              </style>
+            </subContainerMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="16" showIcon="false" labelExpression="Team Composition" backgroundStyle="GradientTopToBottom">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelFormat>bold</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+            </style>
+          </subContainerMappings>
+          <subContainerMappings name="EventsContainer" semanticCandidatesExpression="aql:self" domainClass="wc::TeamMatchDetails" childrenPresentation="VerticalStack">
+            <subContainerMappings name="Event" semanticCandidatesExpression="feature:events" domainClass="wc::Event">
+              <style xsi:type="style:FlatContainerStyleDescription" labelSize="12" showIcon="false" labelExpression="aql:self.description + ' ['+ self.time + ']'" backgroundStyle="GradientTopToBottom">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+              </style>
+            </subContainerMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="16" showIcon="false" labelExpression="Events" backgroundStyle="GradientTopToBottom">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelFormat>bold</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+            </style>
+          </subContainerMappings>
+          <subContainerMappings name="StatisticsContainer" semanticCandidatesExpression="aql:self" domainClass="wc::TeamMatchDetails" childrenPresentation="List">
+            <subNodeMappings name="Goals" semanticCandidatesExpression="feature:statistics" domainClass="wc::TeamMatchStatistics">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Goals: ' + self.goals" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="Penalties" semanticCandidatesExpression="feature:statistics" domainClass="wc::TeamMatchStatistics">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Penalties: ' + self.penalties" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="AttemptsOnGoal" semanticCandidatesExpression="feature:statistics" domainClass="wc::TeamMatchStatistics">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Attempts on goal: ' + self.attemptsOnGoal" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="OnTarget" semanticCandidatesExpression="feature:statistics" domainClass="wc::TeamMatchStatistics">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'On target: ' + self.onTarget" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="OffTarget" semanticCandidatesExpression="feature:statistics" domainClass="wc::TeamMatchStatistics">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Off target: ' + self.offTarget" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="Blocked" semanticCandidatesExpression="feature:statistics" domainClass="wc::TeamMatchStatistics">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Blocked: ' + self.blocked" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="Woodwork" semanticCandidatesExpression="feature:statistics" domainClass="wc::TeamMatchStatistics">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Woodwork: ' + self.woodwork" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="Corners" semanticCandidatesExpression="feature:statistics" domainClass="wc::TeamMatchStatistics">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Corners: ' + self.corners" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="Offsides" semanticCandidatesExpression="feature:statistics" domainClass="wc::TeamMatchStatistics">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Offsides: ' + self.offsides" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="BallPossession" semanticCandidatesExpression="feature:statistics" domainClass="wc::TeamMatchStatistics">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Ball possession: ' + self.ballPossession" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="PassAccuracy" semanticCandidatesExpression="feature:statistics" domainClass="wc::TeamMatchStatistics">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Pass accuracy: ' + self.passAccuracy" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="NumPasses" semanticCandidatesExpression="feature:statistics" domainClass="wc::TeamMatchStatistics">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Num passes: ' + self.numPasses" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="PassesCompleted" semanticCandidatesExpression="feature:statistics" domainClass="wc::TeamMatchStatistics">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Passes completed: ' + self.passesCompleted" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="DistanceCovered" semanticCandidatesExpression="feature:statistics" domainClass="wc::TeamMatchStatistics">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Distance covered: ' + self.distanceCovered" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="BallsRecovered" semanticCandidatesExpression="feature:statistics" domainClass="wc::TeamMatchStatistics">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Balls recovered: ' + self.ballsRecovered" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="Tackles" semanticCandidatesExpression="feature:statistics" domainClass="wc::TeamMatchStatistics">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Tackles: ' + self.tackles" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="Clearances" semanticCandidatesExpression="feature:statistics" domainClass="wc::TeamMatchStatistics">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Clearances: ' + self.clearances" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="YellowCards" semanticCandidatesExpression="feature:statistics" domainClass="wc::TeamMatchStatistics">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Yellow cards: ' + self.yellowCards" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="RedCards" semanticCandidatesExpression="feature:statistics" domainClass="wc::TeamMatchStatistics">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Red cards: ' + self.redCards" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="FoulsCommitted" semanticCandidatesExpression="feature:statistics" domainClass="wc::TeamMatchStatistics">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Fouls committed: ' + self.foulsCommitted" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="16" showIcon="false" labelExpression="Statistics" backgroundStyle="GradientTopToBottom">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelFormat>bold</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="20" showIcon="false" labelExpression="aql:if self.winner then 'Away Team - ' + self.team.code + ': ' + self.team.country + ' (winner)' else 'Away Team - ' + self.team.code + ': ' + self.team.country endif">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="MatchArena" semanticCandidatesExpression="feature:arena" domainClass="wc::Arena" childrenPresentation="List">
+          <subNodeMappings name="ArenaName" semanticCandidatesExpression="aql:self" domainClass="wc::Arena">
+            <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Name: ' + self.name" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="ArenaCity" semanticCandidatesExpression="aql:self" domainClass="wc::Arena">
+            <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'City: ' + self.city" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="20" showIcon="false" labelExpression="Arena">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="MatchWeather" semanticCandidatesExpression="feature:weather" domainClass="wc::Weather" childrenPresentation="List">
+          <subNodeMappings name="Description" semanticCandidatesExpression="aql:self" domainClass="wc::Weather">
+            <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:self.description" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="TempCelcius" semanticCandidatesExpression="aql:self" domainClass="wc::Weather">
+            <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Temperature celcius: ' + self.tempCelcius" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="TempFarenheit" semanticCandidatesExpression="aql:self" domainClass="wc::Weather">
+            <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Temperature farenheit: ' + self.tempFarenheit" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="WindSpeed" semanticCandidatesExpression="aql:self" domainClass="wc::Weather">
+            <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Wind speed: ' + self.windSpeed" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="Humidity" semanticCandidatesExpression="aql:self" domainClass="wc::Weather">
+            <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Humidity: ' + self.humidity" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="20" showIcon="false" labelExpression="Weather">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="EditTools">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation/>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:PaneBasedSelectionWizardDescription" name="AddDefenders" candidatesExpression="aql:self.eContainer().team.players">
+            <element name="element"/>
+            <containerView name="containerView"/>
+            <container name="container"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:MoveElement"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:SelectionWizardDescription" name="AssignPlayer" candidatesExpression="aql:self.eContainer().team.players">
+            <element name="element"/>
+            <containerView name="containerView"/>
+            <container name="container"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="wc::Player" referenceName="containerView">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:element.name"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="TeamDiagram" domainClass="wc::Team" enablePopupBars="true">
+      <defaultLayer name="Default">
+        <containerMappings name="TeamContainer" semanticCandidatesExpression="aql:self" domainClass="wc::Team" childrenPresentation="List">
+          <subNodeMappings name="Player" semanticCandidatesExpression="feature:players" domainClass="wc::Player">
+            <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:self.name + ' #' + self.shirtNumber" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="20" showIcon="false" labelExpression="aql:self.code + ': ' + self.country">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="ArenaDiagram" domainClass="wc::Arena" enablePopupBars="true">
+      <defaultLayer name="Default">
+        <containerMappings name="ArenaContainer" semanticCandidatesExpression="aql:self" domainClass="wc::Arena" childrenPresentation="VerticalStack">
+          <subContainerMappings name="ArenaDetails" semanticCandidatesExpression="aql:self" domainClass="wc::Arena" childrenPresentation="List">
+            <subNodeMappings name="ArenaName" semanticCandidatesExpression="aql:self" domainClass="wc::Arena">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Name: ' + self.name" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="ArenaCity" semanticCandidatesExpression="aql:self" domainClass="wc::Arena">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'City: ' + self.city" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="20" showIcon="false" labelExpression="Arena Details" hideLabelByDefault="true">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+            </style>
+          </subContainerMappings>
+          <subContainerMappings name="WeatherHistory" semanticCandidatesExpression="aql:self" domainClass="wc::Arena" childrenPresentation="VerticalStack">
+            <subContainerMappings name="Weather" semanticCandidatesExpression="feature:weatherHistory" domainClass="wc::Weather" childrenPresentation="List">
+              <subNodeMappings name="Description" semanticCandidatesExpression="aql:self" domainClass="wc::Weather">
+                <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:self.description" labelPosition="node" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </subNodeMappings>
+              <subNodeMappings name="TempCelcius" semanticCandidatesExpression="aql:self" domainClass="wc::Weather">
+                <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Temperature celcius: ' + self.tempCelcius" labelPosition="node" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </subNodeMappings>
+              <subNodeMappings name="TempFarenheit" semanticCandidatesExpression="aql:self" domainClass="wc::Weather">
+                <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Temperature farenheit: ' + self.tempFarenheit" labelPosition="node" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </subNodeMappings>
+              <subNodeMappings name="WindSpeed" semanticCandidatesExpression="aql:self" domainClass="wc::Weather">
+                <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Wind speed: ' + self.windSpeed" labelPosition="node" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </subNodeMappings>
+              <subNodeMappings name="Humidity" semanticCandidatesExpression="aql:self" domainClass="wc::Weather">
+                <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'Humidity: ' + self.humidity" labelPosition="node" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </subNodeMappings>
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderLineStyle="dot" labelSize="20" showIcon="false" labelExpression="Weather" hideLabelByDefault="true">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+              </style>
+            </subContainerMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="20" showIcon="false" labelExpression="Weather History">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="20" showIcon="false" labelExpression="Arena Details">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="UniverseDiagram" showOnStartup="true" domainClass="wc::Universe" enablePopupBars="true">
+      <defaultLayer name="Default">
+        <containerMappings name="WorldCups" semanticCandidatesExpression="aql:self" domainClass="wc::Universe" childrenPresentation="List">
+          <subNodeMappings name="WorldCupNode" semanticCandidatesExpression="feature:worldCups" doubleClickDescription="//@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='UniverseDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='NavigateWorldCup']" domainClass="wc::WorldCup">
+            <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="aql:'World cup ' + self.year" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="20" showIcon="false" labelExpression="World Cups">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="NavigationTools">
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="NavigateWorldCup" mappings="//@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='UniverseDiagram']/@defaultLayer/@containerMappings[name='WorldCups']/@subNodeMappings[name='WorldCupNode']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:Navigation" createIfNotExistent="true" diagramDescription="//@ownedViewpoints[name='WcDiagramViewpoint']/@ownedRepresentations[name='WcDiagram']"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedJavaExtensions qualifiedClassName="tdt4250.football.diagram.Services"/>
+  </ownedViewpoints>
+</description:Group>

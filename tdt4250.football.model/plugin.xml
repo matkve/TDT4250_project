@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated footballWorldCups -->
+      <package
+            uri="platform:/plugin/tdt4250.football.model/model/footballWorldCups.ecore"
+            class="tdt4250.wc.WcPackage"
+            genModel="model/footballWorldCups.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated footballWorldCups -->
+      <parser
+            type="wc"
+            class="tdt4250.wc.util.WcResourceFactoryImpl"/>
+   </extension>
+
+</plugin>
