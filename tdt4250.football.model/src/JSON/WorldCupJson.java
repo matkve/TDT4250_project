@@ -163,6 +163,8 @@ public class WorldCupJson {
 			else if(winnerTeam.equals(awayTeam)) {
 				awayTeamMatchDetails.eSet(wcEPackage.getTeamMatchDetails_Winner(), true);
 			}
+			// Set date time for match
+			match.eSet(wcEPackage.getMatch_Datetime(), m.getDatetime());
 			// Create team statistics for the match
 			EObject homeTeamMatchStats = createTeamMatchStats(homeTeamStats, m.getHome_team());
 			EObject awayTeamMatchStats = createTeamMatchStats(awayTeamStats, m.getAway_team());
